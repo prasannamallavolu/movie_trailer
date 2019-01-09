@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial_scale=1">
+    <title>Movie Trailers!</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 75px;
+            background-color:#E8F8F5;
+            background-image:url("https://www.aacounty.org/sebin/l/a/page-background-default.jpg")
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 639px;
+            height: 479px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        p_trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover {
+            background-color:#85C1E9;
+            cursor: pointer;
+            border-radius:5%;
+        }
+        .p_scale_media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .p_scale_media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: black;
+        }
+        img{
+          border-radius:12%;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'p_trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="p_scale_media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Movie Trailers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="uVpHL5g4buY" data-toggle="modal" data-target="#trailer">
+    <img src="https://wallpapers.filmibeat.com/ph-1024x768/2014/04/bangalore-days-wallpaper_139652831720.jpg" width="220" height="342">
+    <h2 style="font-family:serif;color:red;">Banglore Days</h2>
+    <p style="color:violet;">Friendship Movie</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="k2seict_FEA" data-toggle="modal" data-target="#trailer">
+    <img src="http://4.bp.blogspot.com/-7VmnvfmahOs/TYokZmfh3XI/AAAAAAAADCY/FhH3VA4TeqU/s1600/Mr.Perfect%2BWP%2B02.jpg" width="220" height="342">
+    <h2 style="font-family:serif;color:red;">Mr.Perfect</h2>
+    <p style="color:violet;">Family Entertainment Movie</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="eYZ_bP9xGpQ" data-toggle="modal" data-target="#trailer">
+    <img src="https://media-images.mio.to/various_artists/S/Snehithudu%20%282012%29/Art-350.jpg" width="220" height="342">
+    <h2 style="font-family:serif;color:red;">Snehithudu</h2>
+    <p style="color:violet;">FriendShip Movie</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="-VkZ9e8I8mk" data-toggle="modal" data-target="#trailer">
+    <img src="http://ilovefree.in/wp-content/uploads/2016/09/Rail-Telugu-Movie-Review-Rating3.755-Public-Talk-Dynamic.jpg" width="220" height="342">
+    <h2 style="font-family:serif;color:red;">Rail</h2>
+    <p style="color:violet;">Action Comedy Film</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="Ghizg_3uI3E" data-toggle="modal" data-target="#trailer">
+    <img src="https://i.ytimg.com/vi/aCY4E1ZCrwo/maxresdefault.jpg" width="220" height="342">
+    <h2 style="font-family:serif;color:red;">Meesaya Murukku</h2>
+    <p style="color:violet;">Failure Love story of a B.tech Student</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="FaS_dMl72Qc" data-toggle="modal" data-target="#trailer">
+    <img src="https://www.img.myfirstshow.com/uploads/2017/10/Vunnadhi-Okate-Zindagi-Review-e1509096619523.jpg" width="220" height="342">
+    <h2 style="font-family:serif;color:red;">Vunnadi Okate Zindagi</h2>
+    <p style="color:violet;">Friendship Movie</p>
+</div>
+
+    </div>
+  </body>
+</html>
